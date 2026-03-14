@@ -1,0 +1,26 @@
+ai_engine/services.py
+
+This protects API keys and logs usage.
+
+import requests
+from usage.models import UsageRecord
+
+def process_ai_request(user, prompt):
+
+    # Example external AI call
+    response = requests.post(
+        "https://api.example-ai.com/generate",
+        json={"prompt": prompt}
+    )
+
+    result = response.json()
+
+    tokens = result.get("tokens_used", 10)
+
+    UsageRecord.objects.create(
+        user=user,
+        endpoint="generate",
+        tokens_used=tokens
+    )
+
+    return result
