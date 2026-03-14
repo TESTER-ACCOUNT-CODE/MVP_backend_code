@@ -1,0 +1,9 @@
+Create project :
+
+
+django-admin startproject config
+cd config
+python manage.py startapp accounts
+python manage.py startapp subscriptions
+python manage.py startapp usage
+python manage.py startapp ai_engine
