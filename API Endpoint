@@ -1,0 +1,19 @@
+ai_engine/views.py
+
+
+
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .services import process_ai_request
+
+@api_view(["POST"])
+def generate_ai(request):
+
+    if not request.user.is_authenticated:
+        return Response({"error":"authentication required"}, status=401)
+
+    prompt = request.data.get("prompt")
+
+    result = process_ai_request(request.user, prompt)
+
+    return Response(result)
