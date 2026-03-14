@@ -1,0 +1,9 @@
+Security Features in This MVP
+
+✔ Session auth
+✔ CSRF protection (built into Django)
+✔ API proxy for AI calls
+✔ Usage tracking
+✔ Redis rate limiting
+✔ Role-based users
+✔ Admin panel
